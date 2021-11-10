@@ -57,9 +57,15 @@ io.on("connection", (socket) => {
 
     socket.on("sendmessage", async ({ message, room }) => {
 
-        // console.log(room)
+        console.log("room:", room.name)
+
+        io.to(room).emit("newMessage", { message, username: onlineUsers.find(user => user.id === socket.id).username })
+
+
+
 
         // we need to save the message to the Database
+    
 
         // try {
 
