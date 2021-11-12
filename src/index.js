@@ -57,9 +57,10 @@ io.on("connection", (socket) => {
 
     socket.on("sendmessage", async ({ message, room }) => {
 
-        console.log("room:", room.name)
+        console.log("room:", room)
 
         io.to(room).emit("newMessage", { message, username: onlineUsers.find(user => user.id === socket.id).username })
+        console.log({ message, username: onlineUsers.find(user => user.id === socket.id).username })
 
 
 
